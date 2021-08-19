@@ -1,0 +1,21 @@
+development: &default
+  adapter: postgresql
+  encoding: unicode
+  database: test_app_development
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch('DB_USERNAME', 'mer-db') %>
+  password: <%= ENV.fetch('DB_PASSWORD', 'mer-db') %>
+  host: <%= ENV.fetch('DB_HOST', 'localhost') %>
+  port: <%= ENV.fetch('DB_PORT', '5432') %>
+
+test: &test
+  <<: *default
+  database: test_app_test
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV['DATABASE_URL'] %>
