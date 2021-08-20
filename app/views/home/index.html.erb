@@ -1,1 +1,6 @@
 <h1>Hello !!</h1>
+
+<h3>Table data example</h3>
+<% @table_data.each do |(key, value)| %>
+	<b><%= key %></b>: <%= value %><br>
+<% end %>
